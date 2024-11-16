@@ -9,7 +9,7 @@ BHOP_MAXVEL = 3000
 for i = 1, _MaxPlayers() do
     lastjump[i] = 0
     nextjump[i] = 0
-    bhop_enabled[i] = true
+    bhop_enabled[i] = false -- too overpowered
 end
 
 local function jumpmult(userid, key)
