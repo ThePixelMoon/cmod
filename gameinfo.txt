@@ -1,15 +1,11 @@
 "GameInfo"
 {
-	game	"Garry's Mod 9"
-	title	"Garry's Mod"
-	title2	"Nine"
-	
-	"developer" 		"TEAM GARRY"
-	"developer_url" 	"http://gmod.garry.tv/"
-	"icon" 			"v" 
-	"manual"               "http://gmwiki.garry.tv"
+	game	"Cheesy's Mod"
+	title	"Cheesy's Mod"
+	title2	" "
 
-
+	"developer" 		"YourLocalMoon"
+	"icon" 			"v"
 
 	hidden_maps
 	{
