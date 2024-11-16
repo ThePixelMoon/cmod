@@ -1,1 +1,7 @@
 .vscode/
+mods/-modcache/
+
+*.cache
+stats.txt
+voice_ban.dt
+config.cfg
