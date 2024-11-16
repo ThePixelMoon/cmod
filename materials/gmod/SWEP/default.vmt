@@ -1,0 +1,9 @@
+"UnlitGeneric"
+{
+	"$baseTexture" 		"gmod/SWEP/default"
+	"$vertexalpha" 		"1"
+	"$nolod" 		"1"
+	"$ignorez"		"1"
+	"$vertexcolor" 		"1"
+	"$additive" 		"1"
+}

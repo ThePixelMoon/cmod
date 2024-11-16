@@ -1,0 +1,6 @@
+"UnlitGeneric"
+{
+	"$baseTexture" "gmod/scope"
+	"$vertexalpha" 1
+	"$vertexcolor" 1
+}

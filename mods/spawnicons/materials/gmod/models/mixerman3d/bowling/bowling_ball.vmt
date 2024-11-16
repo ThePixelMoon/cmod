@@ -1,0 +1,5 @@
+"UnlitGeneric"
+{
+	"$baseTexture" "gmod/models/mixerman3d/bowling/bowling_ball"
+	"$vertexalpha" 1
+}

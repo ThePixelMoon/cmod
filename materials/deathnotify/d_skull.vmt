@@ -1,0 +1,9 @@
+"UnlitGeneric"
+{
+	"$translucent" 1
+	//"$basetexture" "deathnotify/pwn"
+	"$basetexture" "deathnotify/classic_bones"
+	"$vertexcolor" 1 // enable vertex colour if you want it to be HUD coloured.
+	"$ignorez" 1
+	"$additive" 1
+}

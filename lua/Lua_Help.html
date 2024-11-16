@@ -1,0 +1,159 @@
+<div style="text-align: center;">
+
+<div style="width: 750px; margin: 0px auto; border: 5px solid #ccc; background-color: #eee; padding: 10px; font-size: 12px; font-family: Tahoma; margin-top: 30px; color: #222; text-align: left;">
+
+<div style="font-size: 30px; font-family: impact; width: 100%; margin-bottom: 20px;">Lua Help</div>
+
+This 'cheat sheet' is aimed at people that have a basic knowledge of programming. I'll start with some quick and obvious things that people may or may not know.
+
+<ul>
+<li> The .lua files are plain text. Open them with a text editor (like Notepad).
+<li> If you open in notepad and all of the text is on one line then use an editor like <a href="http://www.flos-freeware.ch/notepad2.html">Notepad2</a> or <a href="http://blua.sourceforge.net/">BLua</a>.
+<li> All functions which call functions in the Source Engine start with the _ character.
+<li> You don't have to add a ; at the end of every line - put it won't punish you for adding it.
+</ul>
+
+As for the style of Lua.. Here's some common code to learn from.
+
+<ul>
+<li> <strong>Defining a function</strong>
+<p><pre>
+function SayMyName( name )
+
+     Msg( "Your Name Is " .. name )
+
+end
+</pre></p>
+
+<li> <strong>Calling a function</strong>
+<p><pre>
+SayMyName( "garry" );
+</pre></p>
+
+<li> <strong>Commenting</strong>
+<p><pre>
+-- Calling the function boss.
+SayMyName( "garry" );
+-- Called the function boss.
+</pre></p>
+
+<li> <strong>If statement</strong>
+<p><pre>
+
+if ( name == "garry" ) then
+
+     SayMyName( "garry" )
+
+end
+
+
+if ( name ~= "garry" ) then
+
+     SayMyName( "NOT garry" )
+
+end
+</pre></p>
+
+
+
+
+<li> <strong>For statement</strong>
+<p><pre>
+-- Loops i from 0 to 32
+for i=0, 32 do
+
+    Msg( "Number " .. i )
+
+end
+</pre></p>
+
+
+<li> <strong>Variables</strong>
+<p><pre>
+
+-- Locals only exist within the function in which they're defined
+-- If you don't declare a variable as local it will exist globally by default
+
+local name = "garry"
+
+
+-- Tables are like arrays, they must be declared like so
+
+PlayerNames = {}
+
+
+-- and then you can fill them up like so
+
+PlayerNames[0] = "david"
+PlayerNames[1] = "andrew"
+
+Msg( "Player 0's name is " .. PlayerNames[0] )
+
+
+-- The index doesn't have to be a number
+
+PlayerNames["test"] = "superdood";
+
+Msg( "Player's name is " .. PlayerNames["test"] )
+-- or
+Msg( "Player's name is " .. PlayerNames.test )
+
+
+-- Variables aren't a set type and can hold anything
+
+Players = {}
+
+Players[0] = {}
+Players[0].name = "Garry"
+Players[0].money = 1000
+Players[0].age = 32
+
+
+-- They can even hold functions since they're a legitimate variable type
+
+function SayHello( )
+
+     Msg ( "Hello" )
+
+end
+
+Players[0].intro = SayHello
+
+Players[0].intro()
+
+
+-- which means you can also pass them to functions
+
+function SayPlayerHello ( in_function )
+
+     in_function()
+
+end
+
+SayPlayerHello( Players[0].intro )
+
+</pre></p>
+
+</ul>
+
+<p>
+I probably went a bit complicated towards the end for the new guys. 
+I just want to give you an idea of what to expect when you're looking at other people's code.
+I know what it's like to have big blanks in your programming knowledge.
+</p>
+
+<p>
+Anyway, here's some useful Lua links:
+</p>
+
+<ul>
+<li> <a href="http://www.lua.org/">Lua's Homepage</a> - not too useful, but you might want to visit.
+<li> <a href="http://gmwiki.garry.tv/index.php/Lua">GMod Wiki</a> - the Lua scripting section in the Garry's Mod Wiki.
+<li> <a href="http://forums.facepunchstudios.com/forumdisplay.php?f=49">GMod Lua Forum</a> - ask for help, give help, share your mods!
+</ul>
+
+<div style="width: 100%; text-align: right; margin: 30px; font-weight: bold;">- TEAM GARRY</div>
+
+</div>
+
+</div>

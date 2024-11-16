@@ -1,0 +1,5 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "Models\gordon_classic\DM_Base"
+	"$bumpmap"	"Models\gordon_classic\DM_Base_Normal"
+}

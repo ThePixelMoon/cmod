@@ -1,0 +1,5 @@
+"UnlitGeneric"
+{
+	"$baseTexture" "gmod\lamp"
+	"$vertexalpha" 1
+}

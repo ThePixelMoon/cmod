@@ -1,0 +1,6 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "Models\gordon_classic\DM_Face"
+	"$bumpmap"	"Models\gordon_classic\DM_Face_Normal"
+	"$halflambert" 1
+}

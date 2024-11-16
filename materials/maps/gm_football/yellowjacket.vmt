@@ -1,0 +1,7 @@
+"DecalModulate"
+{
+	"$translucent" 1
+	"$basetexture" "maps/gm_football/yellowjacket"
+	"$decal" 1
+	"$decalscale" 0.5
+}

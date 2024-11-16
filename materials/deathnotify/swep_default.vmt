@@ -1,0 +1,8 @@
+"UnlitGeneric"
+{
+	"$translucent" 1
+	"$basetexture" "deathnotify/swep_default"
+	//"$vertexcolor" 1 // enable vertex colour if you want it to be HUD coloured.
+	"$vertexalpha" 1
+	"$ignorez" 1
+}

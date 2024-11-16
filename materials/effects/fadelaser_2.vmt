@@ -1,0 +1,7 @@
+"Sprite"
+{
+	"$spriteorientation" "VP_PARALLEL"
+	"$spriteorigin" "[ 0.50 0.50 ]"
+	"$basetexture" "effects/fadelaser_2"
+	"$spriterendermode" 7
+}
