@@ -1,4 +1,3 @@
-
 ROUND_TIME = (5 * 60)
 timeUpdater = 0
 RT_BUILD = 0
@@ -11,7 +10,7 @@ roundEndFunc = nil
 roundType = -1
 
 wallEnabled = 0
-	
+
 PlayerInfo = {}
 
 Stats = {}
@@ -36,13 +35,12 @@ Stats.ShortestTime.Player = "nobody"
 Stats.ShortestTime.Value = 0
 Stats.ShortestTime.Team = TEAM_SPECTATOR
 
+_OpenScript("includes/Events.lua")
+_OpenScript("includes/player.lua")
+_OpenScript("includes/misc.lua")
 
-_OpenScript( "includes/Events.lua" )
-_OpenScript( "includes/player.lua" )
-_OpenScript( "includes/misc.lua" )
-
-_OpenScript( "gamemodes/bird_man/gamerules.lua" );
-_OpenScript( "gamemodes/bird_man/events.lua" );
-_OpenScript( "gamemodes/bird_man/gui.lua" );
-_OpenScript( "gamemodes/bird_man/cmds.lua" );
-_OpenScript( "gamemodes/bird_man/adminlist.lua")
+_OpenScript("gamemodes/bird_man/gamerules.lua");
+_OpenScript("gamemodes/bird_man/events.lua");
+_OpenScript("gamemodes/bird_man/gui.lua");
+_OpenScript("gamemodes/bird_man/cmds.lua");
+_OpenScript("gamemodes/bird_man/adminlist.lua")

@@ -1,75 +1,79 @@
---##############################
---## Hide and Seek
---## fayte, gdhughes@gmail.com
---##############################
+-- ##############################
+-- ## Hide and Seek
+-- ## fayte, gdhughes@gmail.com
+-- ##############################
+function ShootPrimaryCatcher(ownerid, index)
 
-function ShootPrimaryCatcher( ownerid, index ) 
+    local vecpos = _PlayerGetShootPos(ownerid);
+    local plyang = _PlayerGetShootAng(ownerid);
+    _TraceLine(vecpos, plyang, 4096, ownerid);
 
-	local vecpos = _PlayerGetShootPos( ownerid );
-  	local plyang = _PlayerGetShootAng( ownerid );
-  	_TraceLine( vecpos, plyang, 4096, ownerid );
-	
-	if ( not _PlayerInfo( ownerid, "alive" ) ) then return; end
-	if ( not _TraceHit() ) then return; end
-	if ( _EntGetType( _TraceGetEnt() ) ~= "player" ) then return; end
-	if ( _PlayerInfo( _TraceGetEnt(), "team" ) ~= TEAM_HIDERS ) then return; end
-	if ( _PlayerInfo( ownerid, "team" ) ~= TEAM_SEEKERS ) then return; end
-	
-	HSNumFound = HSNumFound + 1
-	HSIsFound[ _TraceGetEnt() ] = true
+    if (not _PlayerInfo(ownerid, "alive")) then return; end
+    if (not _TraceHit()) then return; end
+    if (_EntGetType(_TraceGetEnt()) ~= "player") then return; end
+    if (_PlayerInfo(_TraceGetEnt(), "team") ~= TEAM_HIDERS) then return; end
+    if (_PlayerInfo(ownerid, "team") ~= TEAM_SEEKERS) then return; end
 
-	_PrintMessage( _TraceGetEnt(), 4, "You were found!" );
-	_PrintMessageAll( 3, _PlayerInfo(_TraceGetEnt(), "name") .. " was found by " .. _PlayerInfo(ownerid, "name") .. "!" );
+    HSNumFound = HSNumFound + 1
+    HSIsFound[_TraceGetEnt()] = true
 
-	_TeamAddScore( TEAM_SEEKERS, 8 );
+    _PrintMessage(_TraceGetEnt(), 4, "You were found!");
+    _PrintMessageAll(3,
+                     _PlayerInfo(_TraceGetEnt(), "name") .. " was found by " ..
+                         _PlayerInfo(ownerid, "name") .. "!");
 
-	_PlayerSilentKill( _TraceGetEnt(), 1, true );
-	
-	DrawScores( 0 );
-	
+    _TeamAddScore(TEAM_SEEKERS, 8);
+
+    _PlayerSilentKill(_TraceGetEnt(), 1, true);
+
+    DrawScores(0);
+
 end
 
-function ShootPrimarySuperCatcher( ownerid, index ) 
+function ShootPrimarySuperCatcher(ownerid, index)
 
-	if ( not _PlayerInfo( ownerid, "alive" ) ) then return; end
-	if ( _PlayerInfo( ownerid, "team" ) ~= TEAM_SEEKERS ) then return; end
+    if (not _PlayerInfo(ownerid, "alive")) then return; end
+    if (_PlayerInfo(ownerid, "team") ~= TEAM_SEEKERS) then return; end
 
-	local vecpos = _PlayerGetShootPos( ownerid );
-  	local plyang = _PlayerGetShootAng( ownerid );
-  	_TraceLine( vecpos, plyang, 4096, ownerid );
+    local vecpos = _PlayerGetShootPos(ownerid);
+    local plyang = _PlayerGetShootAng(ownerid);
+    _TraceLine(vecpos, plyang, 4096, ownerid);
 
-	local hitpos = _TraceEndPos();
+    local hitpos = _TraceEndPos();
 
-	if ( not _TraceHit() ) then 
-		local hitpos = vecAdd( vecpos, vecMul( plyang, vector3(4096,4096,4096) ) );
-	end
-	
-	local newvel = vecMul( plyang, vector3(-800, -800, -800) ); 
-	_EntSetVelocity( ownerid, newvel );
+    if (not _TraceHit()) then
+        local hitpos = vecAdd(vecpos, vecMul(plyang, vector3(4096, 4096, 4096)));
+    end
 
-	_EffectInit(); 	
-	_EffectSetEnt( ownerid ); 
-	_EffectSetOrigin( hitpos ); 	
-	_EffectSetStart( vecpos ); 
-	_EffectSetScale( 15 ); 	
-	_EffectSetMagnitude( 3); 
-	_EffectDispatch( "FadingLineTeam" );
-	_EffectSetMagnitude( 4 ); 
-	_EffectSetScale( 9 ); 	
-	_EffectDispatch( "FadingLineTeam" );
+    local newvel = vecMul(plyang, vector3(-800, -800, -800));
+    _EntSetVelocity(ownerid, newvel);
 
-	if ( _EntGetType( _TraceGetEnt() ) ~= "player" ) then return; end
-	if ( _PlayerInfo( _TraceGetEnt(), "team" ) ~= TEAM_HIDERS ) then return; end
+    _EffectInit();
+    _EffectSetEnt(ownerid);
+    _EffectSetOrigin(hitpos);
+    _EffectSetStart(vecpos);
+    _EffectSetScale(15);
+    _EffectSetMagnitude(3);
+    _EffectDispatch("FadingLineTeam");
+    _EffectSetMagnitude(4);
+    _EffectSetScale(9);
+    _EffectDispatch("FadingLineTeam");
 
-	HSNumFound = HSNumFound + 1
-	HSIsFound[ _TraceGetEnt() ] = true
+    if (_EntGetType(_TraceGetEnt()) ~= "player") then return; end
+    if (_PlayerInfo(_TraceGetEnt(), "team") ~= TEAM_HIDERS) then return; end
 
-	_PrintMessage( _TraceGetEnt(), 4, "You were found!" );
-	_PrintMessageAll( 3, _PlayerInfo(_TraceGetEnt(), "name") .. " was found by " .. _PlayerInfo(ownerid, "name") .. " with the SuperCatcher 6000!" );
+    HSNumFound = HSNumFound + 1
+    HSIsFound[_TraceGetEnt()] = true
 
-	_TeamAddScore( TEAM_SEEKERS, 10 );
-	_PlayerSilentKill( _TraceGetEnt(), 1, true );
-	
-	DrawScores( 0 );
+    _PrintMessage(_TraceGetEnt(), 4, "You were found!");
+    _PrintMessageAll(3,
+                     _PlayerInfo(_TraceGetEnt(), "name") .. " was found by " ..
+                         _PlayerInfo(ownerid, "name") ..
+                         " with the SuperCatcher 6000!");
+
+    _TeamAddScore(TEAM_SEEKERS, 10);
+    _PlayerSilentKill(_TraceGetEnt(), 1, true);
+
+    DrawScores(0);
 
 end

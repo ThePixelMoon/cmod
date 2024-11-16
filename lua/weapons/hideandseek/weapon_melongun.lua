@@ -1,49 +1,44 @@
---##############################
---## Hide and Seek
---## fayte, gdhughes@gmail.com
---##############################
-
---## How powerfully the melon is shot.
+-- ##############################
+-- ## Hide and Seek
+-- ## fayte, gdhughes@gmail.com
+-- ##############################
+-- ## How powerfully the melon is shot.
 SHOT_POWER = 8000;
 
+-- ###########################################################################
 
---###########################################################################
-
-
-MyIndex					= 0;
-Owner 					= 0;
-CurrentTime 				= 0;
+MyIndex = 0;
+Owner = 0;
+CurrentTime = 0;
 
 function onInit()
-	_EntPrecacheModel("models/props_junk/watermelon01.mdl");
-	_SWEPSetSound(MyIndex, "single_shot", "weapon_xm1014.Single")
+    _EntPrecacheModel("models/props_junk/watermelon01.mdl");
+    _SWEPSetSound(MyIndex, "single_shot", "weapon_xm1014.Single")
 end
-	
+
 function onPrimaryAttack()
-	if (_PlayerInfo(Owner, "alive") == false) then
-		return
-	end
-	
-	local melon = _EntCreate( "prop_physics" );
-	local aim = _PlayerGetShootAng(Owner);
+    if (_PlayerInfo(Owner, "alive") == false) then return end
 
-	aim.x = aim.x * SHOT_POWER
-	aim.y = aim.y * SHOT_POWER
-	aim.z = aim.z * SHOT_POWER
+    local melon = _EntCreate("prop_physics");
+    local aim = _PlayerGetShootAng(Owner);
 
-	_EntSetModel(melon, "models/props_junk/watermelon01.mdl");	
-	_EntSetOwner(melon, Owner);
-	_EntSetPos(melon, _PlayerGetShootPos(Owner));
-	_EntSetAng(melon, _PlayerGetShootAng(Owner));
+    aim.x = aim.x * SHOT_POWER
+    aim.y = aim.y * SHOT_POWER
+    aim.z = aim.z * SHOT_POWER
 
-	_EntSetKeyValue(melon, "fademindist", -1);
-	_EntSetKeyValue(melon, "fademaxdist", 0);
-	_EntSetKeyValue(melon, "fadescale", 0);
-	
-	_EntSpawn(melon);
-	_PhysApplyForce(melon, aim);
+    _EntSetModel(melon, "models/props_junk/watermelon01.mdl");
+    _EntSetOwner(melon, Owner);
+    _EntSetPos(melon, _PlayerGetShootPos(Owner));
+    _EntSetAng(melon, _PlayerGetShootAng(Owner));
 
-	_SWEPUseAmmo(MyIndex, 0, 1);
+    _EntSetKeyValue(melon, "fademindist", -1);
+    _EntSetKeyValue(melon, "fademaxdist", 0);
+    _EntSetKeyValue(melon, "fadescale", 0);
+
+    _EntSpawn(melon);
+    _PhysApplyForce(melon, aim);
+
+    _SWEPUseAmmo(MyIndex, 0, 1);
 end
 
 function getPrintName() return "Melon Gun"; end

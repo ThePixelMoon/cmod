@@ -9,22 +9,15 @@
 -- the less health zombies get.
 --
 -------------------------------------------
-
-
 -- Add other models as you please. Just make sure each one has a comma after it except the last one
 HUMAN_MODELS = {
-	"models/player/alyx.mdl",
-	"models/player/barney.mdl",
-	"models/player/breen.mdl",
-	"models/player/eli.mdl",
-	"models/player/monk.mdl"
+    "models/player/alyx.mdl", "models/player/barney.mdl",
+    "models/player/breen.mdl", "models/player/eli.mdl", "models/player/monk.mdl"
 };
 
 ZOMBIE_MODELS = {
-	"models/player/corpse1.mdl",
-	"models/player/classic.mdl",
-	"models/player/stalker.mdl",
-	"models/player/charple01.mdl"
+    "models/player/corpse1.mdl", "models/player/classic.mdl",
+    "models/player/stalker.mdl", "models/player/charple01.mdl"
 };
 
 -- Set this to true if you want to set the humans speed (note: if you set the speed they can't sprint)
@@ -40,9 +33,6 @@ ZOMBIE_SPEED = 200;
 MULTIPLY_ZOMBIE_HEALTH = true;
 ZOMBIE_HEALTH = 150;
 
-
-
-
 ----------------------------------------------------------------------------------------
 -- Don't edit below this line...
 ----------------------------------------------------------------------------------------
@@ -52,28 +42,28 @@ sethealth = {};
 playerZombieModel = {};
 playerHumanModel = {};
 
-for i,v in ipairs(HUMAN_MODELS) do _EntPrecacheModel(v) end
+for i, v in ipairs(HUMAN_MODELS) do _EntPrecacheModel(v) end
 
-for i,v in ipairs(ZOMBIE_MODELS) do _EntPrecacheModel(v) end
+for i, v in ipairs(ZOMBIE_MODELS) do _EntPrecacheModel(v) end
 
-function RandomHumanModel ()
-	if table.getn(HUMAN_MODELS) > 0 then
-		local Rand = math.random(1,table.getn(HUMAN_MODELS))
-		return HUMAN_MODELS[Rand]
-	else
-		return "models/player/barney.mdl"
-	end
+function RandomHumanModel()
+    if table.getn(HUMAN_MODELS) > 0 then
+        local Rand = math.random(1, table.getn(HUMAN_MODELS))
+        return HUMAN_MODELS[Rand]
+    else
+        return "models/player/barney.mdl"
+    end
 end
 
-function RandomZombieModel ()
-	if table.getn(ZOMBIE_MODELS) > 0 then
-		local Rand = math.random(1,table.getn(ZOMBIE_MODELS))
-		return ZOMBIE_MODELS[Rand]
-	else
-		return "models/player/corpse1.mdl"
-	end
+function RandomZombieModel()
+    if table.getn(ZOMBIE_MODELS) > 0 then
+        local Rand = math.random(1, table.getn(ZOMBIE_MODELS))
+        return ZOMBIE_MODELS[Rand]
+    else
+        return "models/player/corpse1.mdl"
+    end
 end
 
-_OpenScript( "includes/events.lua" );
-_OpenScript( "gamemodes/ZombieInfestation/gamerules.lua" );
-_OpenScript( "gamemodes/ZombieInfestation/events.lua" );
+_OpenScript("includes/events.lua");
+_OpenScript("gamemodes/ZombieInfestation/gamerules.lua");
+_OpenScript("gamemodes/ZombieInfestation/events.lua");

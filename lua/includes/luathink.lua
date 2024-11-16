@@ -1,35 +1,20 @@
-
-
 -- A simple script to make it easier to create plugin scripts that can run alongside 
 -- other gamemode scripts without modifying code.
-
-
-
 gLuaThinkFunctions = {}
 
+function DoLuaThinkFunctions()
 
+    for k, v in gLuaThinkFunctions do
 
-	function DoLuaThinkFunctions ()
+        if (gLuaThinkFunctions[k]) then gLuaThinkFunctions[k](); end
 
-		for k, v in gLuaThinkFunctions do
+    end
 
-			if ( gLuaThinkFunctions[k] ) then
+end
 
-				gLuaThinkFunctions[k]();
+function AddThinkFunction(functionname)
 
-			end
+    gLuaThinkFunctions[table.getn(gLuaThinkFunctions) + 1] = functionname;
 
-		end
-
-	end
-
-
-
-
-
-	function AddThinkFunction ( functionname )
-
-		gLuaThinkFunctions[ table.getn(gLuaThinkFunctions) + 1 ] = functionname;
-
-	end
+end
 

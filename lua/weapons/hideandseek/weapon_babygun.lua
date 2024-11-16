@@ -1,53 +1,45 @@
---##############################
---## Hide and Seek
---## fayte, gdhughes@gmail.com
---##############################
-
---## Baby Gun inspired by Moocow. Cheers!
-
-
-
---## How powerfully the baby is shot.
+-- ##############################
+-- ## Hide and Seek
+-- ## fayte, gdhughes@gmail.com
+-- ##############################
+-- ## Baby Gun inspired by Moocow. Cheers!
+-- ## How powerfully the baby is shot.
 SHOT_POWER = 8000;
 
+-- ###########################################################################
 
---###########################################################################
-
-
-MyIndex					= 0;
-Owner 					= 0;
-CurrentTime 				= 0;
+MyIndex = 0;
+Owner = 0;
+CurrentTime = 0;
 
 function onInit()
-	_EntPrecacheModel("models/props_c17/doll01.mdl");
-	_SWEPSetSound(MyIndex, "single_shot", "Doll.Squeak")
+    _EntPrecacheModel("models/props_c17/doll01.mdl");
+    _SWEPSetSound(MyIndex, "single_shot", "Doll.Squeak")
 end
-	
+
 function onPrimaryAttack()
-	if (_PlayerInfo(Owner, "alive") == false) then
-		return
-	end
-	
-	local baby = _EntCreate( "prop_physics" );
-	local aim = _PlayerGetShootAng(Owner);
+    if (_PlayerInfo(Owner, "alive") == false) then return end
 
-	aim.x = aim.x * SHOT_POWER
-	aim.y = aim.y * SHOT_POWER
-	aim.z = aim.z * SHOT_POWER
+    local baby = _EntCreate("prop_physics");
+    local aim = _PlayerGetShootAng(Owner);
 
-	_EntSetModel(baby, "models/props_c17/doll01.mdl");	
-	_EntSetOwner(baby, Owner);
-	_EntSetPos(baby, _PlayerGetShootPos(Owner));
-	_EntSetAng(baby, _PlayerGetShootAng(Owner));
+    aim.x = aim.x * SHOT_POWER
+    aim.y = aim.y * SHOT_POWER
+    aim.z = aim.z * SHOT_POWER
 
-	_EntSetKeyValue(baby, "fademindist", -1);
-	_EntSetKeyValue(baby, "fademaxdist", 0);
-	_EntSetKeyValue(baby, "fadescale", 0);
-	
-	_EntSpawn(baby);
-	_PhysApplyForce(baby, aim);
+    _EntSetModel(baby, "models/props_c17/doll01.mdl");
+    _EntSetOwner(baby, Owner);
+    _EntSetPos(baby, _PlayerGetShootPos(Owner));
+    _EntSetAng(baby, _PlayerGetShootAng(Owner));
 
-	_SWEPUseAmmo(MyIndex, 0, 1);
+    _EntSetKeyValue(baby, "fademindist", -1);
+    _EntSetKeyValue(baby, "fademaxdist", 0);
+    _EntSetKeyValue(baby, "fadescale", 0);
+
+    _EntSpawn(baby);
+    _PhysApplyForce(baby, aim);
+
+    _SWEPUseAmmo(MyIndex, 0, 1);
 end
 
 function getPrintName() return "Baby Gun"; end

@@ -1,224 +1,72 @@
-
-
 -- Called when the weapon is created.
+function onInit() _SWEPSetSound(MyIndex, "single_shot", "Weapon_MP5Navy.Single"); end
 
-	function onInit( )
-		_SWEPSetSound( MyIndex, "single_shot", "Weapon_MP5Navy.Single" );
-	end
-
-	function getDeathIcon( )
-		return "d_9mmAR";
-	end
+function getDeathIcon() return "d_9mmAR"; end
 
 -- Weapon settings.
 -- These are only accessed once when setting the weapon up
 
+function getWeaponSwapHands() return true; end
 
-	function getWeaponSwapHands()
-		return true;	
-	end
-	
+function getWeaponFOV() return 74; end
 
-	function getWeaponFOV()
+function getWeaponSlot() return 3; end
 
-		return 74;	
+function getWeaponSlotPos() return 7; end
 
-	end
+function getFiresUnderwater() return true; end
 
-	
+function getReloadsSingly() return false; end
 
-	function getWeaponSlot()
+function getDamage() return 20; end
 
-		return 3;	
+function getPrimaryShotDelay() return 0.09; end
 
-	end
+function getPrimaryIsAutomatic() return true; end
 
-	
+function getBulletSpread() return vector3(0.01, 0.01, 0.01); end
 
-	function getWeaponSlotPos()
+function getViewKick() return vector3(-1.0, 0.0, 0.0); end
 
-		return 7;	
+function getViewKickRandom() return vector3(0.6, 0.6, 0.5); end
 
-	end
+function getViewModel() return "models/weapons/v_smg_mp5.mdl"; end
 
-	
+function getWorldModel() return "models/weapons/w_smg_mp5.mdl"; end
 
-	function getFiresUnderwater()
+function getClassName() return "weapon_mp5"; end
 
-		return true;
+function getPrimaryAmmoType() return "pistol"; end
 
-	end
+function getSecondaryAmmoType() return "pistol"; end
 
-	
+-- return -1 if it doesn't use clips
 
-	function getReloadsSingly()
+function getMaxClipPrimary() return 30; end
 
-		return false;
+function getMaxClipSecondary() return -1; end
 
-	end
+-- ammo in gun by default
 
-	
+function getDefClipPrimary() return 90; end
 
-	function getDamage()
+function getDefClipSecondary() return -1; end
 
-		return 20;
+-- pistol, smg, ar2, shotgun, rpg, phys, crossbow, melee, slam, grenade
 
-	end
+function getAnimPrefix() return "smg"; end
 
-	
+function getPrintName() return "mp5"; end
 
-	function getPrimaryShotDelay()
+-- 0 = Don't override, shoot bullets, make sound and flash
 
-		return 0.09;
+-- 1 = Don't shoot bullets but do make flash/sounds
 
-	end
+-- 2 = Only play animations
 
-	
-	function getPrimaryIsAutomatic()
+-- 3 = Don't do anything
 
-		return true;
+function getPrimaryScriptOverride() return 0; end
 
-	end
-
-		
-
-	function getBulletSpread()
-
-		return vector3( 0.01, 0.01, 0.01 );
-
-	end
-
-	
-
-	function getViewKick()
-
-		return vector3( -1.0, 0.0, 0.0);
-
-	end
-
-	
-
-	function getViewKickRandom()
-
-		return vector3( 0.6, 0.6, 0.5 );
-
-	end
-
-	
-
-
-	function getViewModel( )
-		return "models/weapons/v_smg_mp5.mdl";
-	end
-
-	function getWorldModel( )
-		return "models/weapons/w_smg_mp5.mdl";
-	end
-
-	
-
-	function getClassName()
-
-		return "weapon_mp5";
-
-	end
-
-
-
-	function getPrimaryAmmoType()
-
-		return "pistol";
-
-	end
-
-		
-
-	function getSecondaryAmmoType()
-
-		return "pistol";
-
-	end
-
-	
-
-	-- return -1 if it doesn't use clips
-
-	function getMaxClipPrimary()
-
-		return 30;
-
-	end
-
-	
-
-	function getMaxClipSecondary()
-
-		return -1;
-
-	end
-
-	
-
-	-- ammo in gun by default
-
-	function getDefClipPrimary()
-
-		return 90;
-
-	end
-
-	
-
-	function getDefClipSecondary()
-
-		return -1;
-
-	end
-
-
-
-	-- pistol, smg, ar2, shotgun, rpg, phys, crossbow, melee, slam, grenade
-
-	function getAnimPrefix()
-
-		return "smg";
-
-	end
-
-
-
-	function getPrintName()
-
-		return "mp5";
-
-	end
-
-	
-
-
-	-- 0 = Don't override, shoot bullets, make sound and flash
-
-	-- 1 = Don't shoot bullets but do make flash/sounds
-
-	-- 2 = Only play animations
-
-	-- 3 = Don't do anything
-
-	
-
-	function getPrimaryScriptOverride()
-
-		return 0;
-
-	end
-
-
-
-	function getSecondaryScriptOverride()
-
-		return 3;
-
-	end
-
-
+function getSecondaryScriptOverride() return 3; end
 

@@ -1,20 +1,17 @@
---##############################
---## Hide and Seek
---## fayte, gdhughes@gmail.com
---##############################
+-- ##############################
+-- ## Hide and Seek
+-- ## fayte, gdhughes@gmail.com
+-- ##############################
+MyIndex = 0;
+Owner = 0;
+CurrentTime = 0;
 
-MyIndex					= 0;
-Owner 					= 0;
-CurrentTime 				= 0;
+function onInit() _SWEPSetSound(MyIndex, "single_shot", "Weapon_G3SG1.Single") end
 
-function onInit()
-	_SWEPSetSound(MyIndex, "single_shot", "Weapon_G3SG1.Single")
-end
-	
 function onPrimaryAttack()
-	_RunString("ShootPrimaryCatcher(" .. Owner .. ", " .. MyIndex .. ")")
+    _RunString("ShootPrimaryCatcher(" .. Owner .. ", " .. MyIndex .. ")")
 end
-	
+
 function onSecondaryAttack() return false; end
 function getPrintName() return "Catcher Gun"; end
 function getClassName() return "catchergun"; end

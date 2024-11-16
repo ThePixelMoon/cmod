@@ -1,100 +1,64 @@
+function gamerulesThink() DoControls(); end
 
+function GiveDefaultItems(playerid)
 
+    if (_PlayerInfo(playerid, "team") == TEAM_SPECTATOR) then return; end
 
+    _PlayerGiveSWEP(playerid, "weapons/tpc/tpc_usp.lua");
 
-	function gamerulesThink ()
+end
 
-		
+function gamerulesStartMap()
 
-		DoControls();
+    PlayerFreezeAll(false)
 
-		
+    _TeamSetName(TEAM_RED, "Team Freedom")
+    _TeamSetName(TEAM_YELLOW, "Team Liberation")
 
-	end 
+    -- Precache the models 
 
-	
+end
 
+function PlayerSpawnChooseModel(playerid)
 
+    if (_PlayerInfo(playerid, "team") == TEAM_YELLOW) then
 
-	function GiveDefaultItems( playerid ) 
-		
-		if ( _PlayerInfo( playerid, "team" ) == TEAM_SPECTATOR )  then return; end;
-		
-		_PlayerGiveSWEP( playerid, "weapons/tpc/tpc_usp.lua" );
-		
-	end
+        _PlayerSetModel(playerid, TEAMA_MODEL)
 
-	
+    else
 
-	
+        _PlayerSetModel(playerid, TEAMB_MODEL)
 
-	function gamerulesStartMap ()
+    end
 
-	
-		PlayerFreezeAll( false )
+end
 
-		_TeamSetName( TEAM_RED, "Team Freedom" )
-		_TeamSetName( TEAM_YELLOW, "Team Liberation" )
+function PickDefaultSpawnTeam(userid)
 
-		-- Precache the models 
+    _PlayerChangeTeam(userid, TEAM_SPECTATOR);
+    return true;
 
-			
+end
 
-	end
+function eventPlayerActive(name, userid, steamid) DrawIntro(userid); end
 
+function GiveMoney(player, amount)
 
+    PlayerInfo[player].Money = PlayerInfo[player].Money + amount;
+    DrawCash(player);
 
-	function PlayerSpawnChooseModel ( playerid )	
+end
 
-		if ( _PlayerInfo( playerid, "team" ) == TEAM_YELLOW )  then
-			
-			_PlayerSetModel( playerid, TEAMA_MODEL )
+function CanBuy(player, amount)
 
-		else
-		
-			_PlayerSetModel( playerid, TEAMB_MODEL )
-			
-		end
-				
-	end
+    if (PlayerInfo[player].Money < amount) then return false; end
+    return true;
 
+end
 
+function TakeCash(player, amount)
 
+    PlayerInfo[player].Money = PlayerInfo[player].Money - amount;
+    DrawCash(player);
 
-	function PickDefaultSpawnTeam( userid )
-
-		_PlayerChangeTeam( userid, TEAM_SPECTATOR );
-		return true; 
-
-	end
-
-	
-
-	function eventPlayerActive ( name, userid, steamid )
-
-		DrawIntro( userid );
-		
-	end
-
-
-	function GiveMoney( player, amount )
-		
-		PlayerInfo[player].Money = PlayerInfo[player].Money + amount;
-		DrawCash( player );
-		
-	end
-
-	function CanBuy( player, amount )
-		
-		if ( PlayerInfo[player].Money < amount ) then return false; end
-		return true;		
-		
-	end
-	
-	
-	function TakeCash( player, amount )
-		
-		PlayerInfo[player].Money = PlayerInfo[player].Money - amount;
-		DrawCash( player );
-		
-	end
+end

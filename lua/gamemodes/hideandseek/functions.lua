@@ -1,77 +1,82 @@
---##############################
---## Hide and Seek
---## fayte, gdhughes@gmail.com
---##############################
+-- ##############################
+-- ## Hide and Seek
+-- ## fayte, gdhughes@gmail.com
+-- ##############################
+function DrawScores(userid)
 
-function DrawScores( userid )
-
-	_GModText_Start( "ChatFont" );
-	_GModText_SetPos( 0.0165, 0.0165 );
-	_GModText_SetColor( 255, 255, 255, 255 );
-	_GModText_SetTime( 99999, 0, 0 );
-	_GModText_SetText( "Hide and Seek     Round " .. HSRoundNum .. "     Press F2 for team selection     Hiders: " .. _TeamScore( TEAM_HIDERS ) .. " points     Seekers: " .. _TeamScore( TEAM_SEEKERS ) .. " points" );
-	_GModText_SetDelay( 0.01 );
-	_GModText_Send( userid, 5 );
-
-end
-
-function MakeHiderVisible( userid ) 
-
-	if ( _PlayerInfo( userid, "team" ) ~= TEAM_HIDERS ) then return; end
-	if ( _PlayerInfo( userid, "alive" ) ~= true ) then return; end
-
-	_EntFire( userid, "Alpha", 30, 0 );
-
-	_PrintMessage( userid, 3, "You are now visible - all Seekers can see you." );
-
-	_PlayerGiveSWEP( userid, "weapons/hideandseek/weapon_melongun.lua" );
-	_PlayerGiveSWEP( userid, "weapons/hideandseek/weapon_babygun.lua" );
-	_PlayerGiveItem( userid, "weapon_physcannon" );
-
-	AddTimer( _TeamNumPlayers( TEAM_HIDERS ) * HIDER_SCORE_MODIFIER, 1, IncreaseHiderScore, userid );
+    _GModText_Start("ChatFont");
+    _GModText_SetPos(0.0165, 0.0165);
+    _GModText_SetColor(255, 255, 255, 255);
+    _GModText_SetTime(99999, 0, 0);
+    _GModText_SetText("Hide and Seek     Round " .. HSRoundNum ..
+                          "     Press F2 for team selection     Hiders: " ..
+                          _TeamScore(TEAM_HIDERS) .. " points     Seekers: " ..
+                          _TeamScore(TEAM_SEEKERS) .. " points");
+    _GModText_SetDelay(0.01);
+    _GModText_Send(userid, 5);
 
 end
 
-function IncreaseHiderScore( userid ) 
+function MakeHiderVisible(userid)
 
-	if ( _PlayerInfo( userid, "team" ) ~= TEAM_HIDERS ) then return; end
-	if ( _PlayerInfo( userid, "alive" ) ~= true ) then return; end
+    if (_PlayerInfo(userid, "team") ~= TEAM_HIDERS) then return; end
+    if (_PlayerInfo(userid, "alive") ~= true) then return; end
 
-	if ( _TeamNumPlayers( TEAM_SEEKERS ) > 0 ) then _TeamAddScore( 2, 1 ); end
+    _EntFire(userid, "Alpha", 30, 0);
 
-	AddTimer( _TeamNumPlayers( TEAM_HIDERS ) * HIDER_SCORE_MODIFIER, 1, IncreaseHiderScore, userid );
-	
-	DrawScores( 0 );
+    _PrintMessage(userid, 3, "You are now visible - all Seekers can see you.");
+
+    _PlayerGiveSWEP(userid, "weapons/hideandseek/weapon_melongun.lua");
+    _PlayerGiveSWEP(userid, "weapons/hideandseek/weapon_babygun.lua");
+    _PlayerGiveItem(userid, "weapon_physcannon");
+
+    AddTimer(_TeamNumPlayers(TEAM_HIDERS) * HIDER_SCORE_MODIFIER, 1,
+             IncreaseHiderScore, userid);
 
 end
 
-function TeamSelect( userid, team, seconds )
+function IncreaseHiderScore(userid)
 
-	_GModRect_Hide( userid, 0, 1.0, 0 );
-	_GModText_Hide( userid, 1, 0.5, 0 );
-	_GModText_Hide( userid, 2, 0.5, 0 );
+    if (_PlayerInfo(userid, "team") ~= TEAM_HIDERS) then return; end
+    if (_PlayerInfo(userid, "alive") ~= true) then return; end
 
-	if ( HSIsFound[userid] ) then
-		_PrintMessage( userid, 3, "Please wait for the next round before you change your team.");
-		return;
-	end
+    if (_TeamNumPlayers(TEAM_SEEKERS) > 0) then _TeamAddScore(2, 1); end
 
-	if ( team == 1 ) then
+    AddTimer(_TeamNumPlayers(TEAM_HIDERS) * HIDER_SCORE_MODIFIER, 1,
+             IncreaseHiderScore, userid);
 
-		if ( _PlayerInfo( userid, "team" ) == TEAM_HIDERS ) then return; end
+    DrawScores(0);
 
-		_PlayerChangeTeam( userid, TEAM_HIDERS );
-		_EntSetKeyValue( userid, "rendermode", 1 );
-		_EntSpawn( userid );
+end
 
-	elseif ( team == 2 ) then
+function TeamSelect(userid, team, seconds)
 
-		if ( _PlayerInfo( userid, "team" ) == TEAM_SEEKERS ) then return; end
+    _GModRect_Hide(userid, 0, 1.0, 0);
+    _GModText_Hide(userid, 1, 0.5, 0);
+    _GModText_Hide(userid, 2, 0.5, 0);
 
-		_PlayerChangeTeam( userid, TEAM_SEEKERS );
-		_EntSetKeyValue( userid, "rendermode", 1 );
-		_EntSpawn( userid );
+    if (HSIsFound[userid]) then
+        _PrintMessage(userid, 3,
+                      "Please wait for the next round before you change your team.");
+        return;
+    end
 
-	end
+    if (team == 1) then
+
+        if (_PlayerInfo(userid, "team") == TEAM_HIDERS) then return; end
+
+        _PlayerChangeTeam(userid, TEAM_HIDERS);
+        _EntSetKeyValue(userid, "rendermode", 1);
+        _EntSpawn(userid);
+
+    elseif (team == 2) then
+
+        if (_PlayerInfo(userid, "team") == TEAM_SEEKERS) then return; end
+
+        _PlayerChangeTeam(userid, TEAM_SEEKERS);
+        _EntSetKeyValue(userid, "rendermode", 1);
+        _EntSpawn(userid);
+
+    end
 
 end

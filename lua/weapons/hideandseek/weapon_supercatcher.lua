@@ -1,23 +1,19 @@
---##############################
---## Hide and Seek
---## fayte, gdhughes@gmail.com
---##############################
+-- ##############################
+-- ## Hide and Seek
+-- ## fayte, gdhughes@gmail.com
+-- ##############################
+-- ## A lot of stuff taken from gm_laserdance by garry
+MyIndex = 0;
+Owner = 0;
+CurrentTime = 0;
 
---## A lot of stuff taken from gm_laserdance by garry
+function onInit() _SWEPSetSound(MyIndex, "single_shot", "Weapon_G3SG1.Single") end
 
-MyIndex					= 0;
-Owner 					= 0;
-CurrentTime 				= 0;
-
-function onInit()
-	_SWEPSetSound(MyIndex, "single_shot", "Weapon_G3SG1.Single")
-end
-	
 function onPrimaryAttack()
-	_SWEPUseAmmo(MyIndex, 0, 1)
-	_RunString("ShootPrimarySuperCatcher(" .. Owner .. ", " .. MyIndex .. ")")
+    _SWEPUseAmmo(MyIndex, 0, 1)
+    _RunString("ShootPrimarySuperCatcher(" .. Owner .. ", " .. MyIndex .. ")")
 end
-	
+
 function onSecondaryAttack() return false; end
 function getPrintName() return "SuperCatcher 6000"; end
 function getClassName() return "supercatchergun"; end
