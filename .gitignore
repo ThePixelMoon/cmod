@@ -5,3 +5,5 @@ mods/-modcache/
 stats.txt
 voice_ban.dt
 config.cfg
+*.ain
+*.tmp
