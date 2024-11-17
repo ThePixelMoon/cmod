@@ -13,4 +13,11 @@
 		"material"	"vgui/chapters/gm_construct"
 		"credits"	"Garry Newman"
 	}
+
+	"gm_flatgrass"
+	{
+		"map"		"gm_flatgrass"
+		"material"	"vgui/chapters/gm_flatgrass"
+		"credits"	"Garry Newman"
+	}
 }
