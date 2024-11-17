@@ -7,7 +7,7 @@
 // = = run console command
 
 
-"Characters"
+"+ Characters"
  {
  	"~Main Characters"		""
 	"#Alyx"					"models/Alyx.mdl"

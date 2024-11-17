@@ -1,4 +1,4 @@
-"Custom Models"
+"- Custom Models"
 {
 	"~Eric Ladick (Mixerman3D)"	"1"
 	

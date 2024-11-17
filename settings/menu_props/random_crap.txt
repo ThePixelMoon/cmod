@@ -1,5 +1,5 @@
-"Random Crap"
- {
+"+ Random Crap"
+{
 	"Rock 1"                		"models/props_wasteland/rockcliff01b.mdl"
 	"Rock 2"                		"models/props_wasteland/rockcliff01c.mdl"
 	"Rock 3"                		"models/props_wasteland/rockcliff01e.mdl"

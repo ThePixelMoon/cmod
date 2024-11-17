@@ -1,6 +1,5 @@
-
-"Useful Stuff"
- {
+"+ Useful Stuff"
+{
  	"~Useful Stuff" ""
  	"Wood Crate 1"                	"models/props_junk/wood_crate001a.mdl"
 	"Wood_Crate 2"                	"models/props_junk/wood_crate002a.mdl"

@@ -1,4 +1,4 @@
-"Effects"
+"+ Effects"
 {
 	"=Dynamic Lamp"                		"lamp"
 	"=Cannister"                		"cannister"
