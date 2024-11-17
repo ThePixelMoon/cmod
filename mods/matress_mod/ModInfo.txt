@@ -1,8 +1,0 @@
-"ModInfo"
-{
-	"name"		"Matress Mod"
-	"version"	"1.4"
-	"author_name"	"Garry Newman"
-	
-	"icon"		"gmod/mod_icon_matress_mod"
-}
