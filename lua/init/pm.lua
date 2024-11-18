@@ -59,9 +59,9 @@ data = nil
 -- Internal functions
 local function add_category(player)
     for _, category in pairs(pmselect.playermodels) do
-        _spawnmenu.AddItem(player, "Playermodels", "@" .. category[1], "echo test")
+        _spawnmenu.AddItem(player, "- Playermodels", "@" .. category[1], "")
         for _, data in pairs(category[2]) do
-            _spawnmenu.AddItem(player, "Playermodels", "+" .. data[1], "playermodel " .. data[2])
+            _spawnmenu.AddItem(player, "- Playermodels", "+" .. data[1], "playermodel " .. data[2])
         end
     end
 end
@@ -82,7 +82,7 @@ for player = 1, _MaxPlayers() do
         if pmselect.data[player] == nil then
             pmselect.data[player] = _EntGetModel(player)
         end
-        _spawnmenu.RemoveCategory(player, "Playermodels")
+        _spawnmenu.RemoveCategory(player, "- Playermodels")
         add_category(player)
         update_model(player)
     end
