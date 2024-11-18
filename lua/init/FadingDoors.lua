@@ -498,35 +498,35 @@ CONCOMMAND("fdoor_padnewtarget", keypadTargetDoor)
 CONCOMMAND("fdoor_applyaccess", targetApplyAccess)
 
 function FadingDoorSpawnMenu(userid)
-    _spawnmenu.AddItem(userid, "Fading Doors", "@Instant Fading Door", "")
-    _spawnmenu.AddItem(userid, "Fading Doors",
+    _spawnmenu.AddItem(userid, "- Fading Doors", "@Instant Fading Door", "")
+    _spawnmenu.AddItem(userid, "- Fading Doors",
                        "@Attaches keypad and turns prop", "")
-    _spawnmenu.AddItem(userid, "Fading Doors",
+    _spawnmenu.AddItem(userid, "- Fading Doors",
                        "@you look at into a Fading Door", "")
-    _spawnmenu.AddItem(userid, "Fading Doors", "+Instant Keypad",
+    _spawnmenu.AddItem(userid, "- Fading Doors", "+Instant Keypad",
                        "fdoor_instant")
-    _spawnmenu.AddItem(userid, "Fading Doors", "+Mirror Keypad",
+    _spawnmenu.AddItem(userid, "- Fading Doors", "+Mirror Keypad",
                        "fdoor_instant 1")
-    _spawnmenu.AddItem(userid, "Fading Doors", "@Can use on existing door", "")
-    _spawnmenu.AddItem(userid, "Fading Doors", "@", "")
-    _spawnmenu.AddItem(userid, "Fading Doors", "@Manage who can use your", "")
-    _spawnmenu.AddItem(userid, "Fading Doors", "@next door or apply to old", "")
-    _spawnmenu.AddItem(userid, "Fading Doors", "+Reload Players",
+    _spawnmenu.AddItem(userid, "- Fading Doors", "@Can use on existing door", "")
+    _spawnmenu.AddItem(userid, "- Fading Doors", "@", "")
+    _spawnmenu.AddItem(userid, "- Fading Doors", "@Manage who can use your", "")
+    _spawnmenu.AddItem(userid, "- Fading Doors", "@next door or apply to old", "")
+    _spawnmenu.AddItem(userid, "- Fading Doors", "+Reload Players",
                        "fdoor_reloadspawnmenu " .. userid)
-    _spawnmenu.AddItem(userid, "Fading Doors", "+Apply access to",
+    _spawnmenu.AddItem(userid, "- Fading Doors", "+Apply access to",
                        "fdoor_applyaccess " .. userid)
-    _spawnmenu.AddItem(userid, "Fading Doors", "@Click to revoke access", "")
+    _spawnmenu.AddItem(userid, "- Fading Doors", "@Click to revoke access", "")
     for i = 1, _MaxPlayers() do
         if _PlayerInfo(i, "connected") then
             if DoorSettings[userid].Access[i] == true then
-                _spawnmenu.AddItem(userid, "Fading Doors",
+                _spawnmenu.AddItem(userid, "- Fading Doors",
                                    "+" .. (_PlayerInfo(i, "name")),
                                    "fdoor_revokeaccess " .. i)
             end
         end
     end
 
-    _spawnmenu.AddItem(userid, "Fading Doors", "@Click to give access", "")
+    _spawnmenu.AddItem(userid, "- Fading Doors", "@Click to give access", "")
     for i = 1, _MaxPlayers() do
         if _PlayerInfo(i, "connected") then
             if DoorSettings[userid].Access[i] ~= true then
@@ -536,71 +536,68 @@ function FadingDoorSpawnMenu(userid)
             end
         end
     end
-    _spawnmenu.AddItem(userid, "Fading Doors", "@     ", "")
-    _spawnmenu.AddItem(userid, "Fading Doors", "@Manual Fading Doors", "")
-    _spawnmenu.AddItem(userid, "Fading Doors", "@Make object infront into", "")
-    _spawnmenu.AddItem(userid, "Fading Doors", "+Door", "fdoor_targetdoor")
-    _spawnmenu.AddItem(userid, "Fading Doors", "+Keypad", "fdoor_targetkeypad")
-    _spawnmenu.AddItem(userid, "Fading Doors", "@Manual keypad target or", "")
-    _spawnmenu.AddItem(userid, "Fading Doors", "@it target last edited door", "")
-    _spawnmenu.AddItem(userid, "Fading Doors", "+Set Keypad target",
+    _spawnmenu.AddItem(userid, "- Fading Doors", "@     ", "")
+    _spawnmenu.AddItem(userid, "- Fading Doors", "@Manual Fading Doors", "")
+    _spawnmenu.AddItem(userid, "- Fading Doors", "@Make object infront into", "")
+    _spawnmenu.AddItem(userid, "- Fading Doors", "+Door", "fdoor_targetdoor")
+    _spawnmenu.AddItem(userid, "- Fading Doors", "+Keypad", "fdoor_targetkeypad")
+    _spawnmenu.AddItem(userid, "- Fading Doors", "@Manual keypad target or", "")
+    _spawnmenu.AddItem(userid, "- Fading Doors", "@it target last edited door", "")
+    _spawnmenu.AddItem(userid, "- Fading Doors", "+Set Keypad target",
                        "fdoor_padnewtarget")
-    _spawnmenu.AddItem(userid, "Fading Doors", "@ ", "")
-    _spawnmenu.AddItem(userid, "Fading Doors", "@Settings", "")
-    _spawnmenu.AddItem(userid, "Fading Doors", "@Applies to next created door",
+    _spawnmenu.AddItem(userid, "- Fading Doors", "@ ", "")
+    _spawnmenu.AddItem(userid, "- Fading Doors", "@Settings", "")
+    _spawnmenu.AddItem(userid, "- Fading Doors", "@Applies to next created door",
                        "")
-    _spawnmenu.AddItem(userid, "Fading Doors", "@or apply to door you look at",
+    _spawnmenu.AddItem(userid, "- Fading Doors", "@or apply to door you look at",
                        "")
-    _spawnmenu.AddItem(userid, "Fading Doors", "+Apply to existing",
+    _spawnmenu.AddItem(userid, "- Fading Doors", "+Apply to existing",
                        "fdoor_apply")
-    _spawnmenu.AddItem(userid, "Fading Doors", "@Color when door is open", "")
-    _spawnmenu.AddItem(userid, "Fading Doors", "+Red",
+    _spawnmenu.AddItem(userid, "- Fading Doors", "@Color when door is open", "")
+    _spawnmenu.AddItem(userid, "- Fading Doors", "+Red",
                        "fdoor_setcolor 255+100+100")
-    _spawnmenu.AddItem(userid, "Fading Doors", "+Green",
+    _spawnmenu.AddItem(userid, "- Fading Doors", "+Green",
                        "fdoor_setcolor 100+255+100")
-    _spawnmenu.AddItem(userid, "Fading Doors", "+Blue",
+    _spawnmenu.AddItem(userid, "- Fading Doors", "+Blue",
                        "fdoor_setcolor 100+100+255")
-    _spawnmenu.AddItem(userid, "Fading Doors", "+Purple",
+    _spawnmenu.AddItem(userid, "- Fading Doors", "+Purple",
                        "fdoor_setcolor 255+100+255")
-    _spawnmenu.AddItem(userid, "Fading Doors", "+Yellow",
+    _spawnmenu.AddItem(userid, "- Fading Doors", "+Yellow",
                        "fdoor_setcolor 255+255+100")
-    _spawnmenu.AddItem(userid, "Fading Doors", "+white",
+    _spawnmenu.AddItem(userid, "- Fading Doors", "+white",
                        "fdoor_setcolor 255+255+255")
     local colorcommand = ("@fdoor_setcolor " .. DoorSettings[userid].Color ..
                              " ")
-    _spawnmenu.AddItem(userid, "Fading Doors", colorcommand, "")
-    _spawnmenu.AddItem(userid, "Fading Doors", "@Seconds to stay open", "")
-    _spawnmenu.AddItem(userid, "Fading Doors", "+1", "fdoor_settime 1")
-    _spawnmenu.AddItem(userid, "Fading Doors", "+3", "fdoor_settime 3")
-    _spawnmenu.AddItem(userid, "Fading Doors", "+5", "fdoor_settime 5")
-    _spawnmenu.AddItem(userid, "Fading Doors", "+7", "fdoor_settime 7")
-    _spawnmenu.AddItem(userid, "Fading Doors", "+10", "fdoor_settime 10")
-    _spawnmenu.AddItem(userid, "Fading Doors", "+12", "fdoor_settime 12")
-    _spawnmenu.AddItem(userid, "Fading Doors", "+15", "fdoor_settime 15")
-    _spawnmenu.AddItem(userid, "Fading Doors", "+30", "fdoor_settime 30")
+    _spawnmenu.AddItem(userid, "- Fading Doors", colorcommand, "")
+    _spawnmenu.AddItem(userid, "- Fading Doors", "@Seconds to stay open", "")
+    _spawnmenu.AddItem(userid, "- Fading Doors", "+1", "fdoor_settime 1")
+    _spawnmenu.AddItem(userid, "- Fading Doors", "+3", "fdoor_settime 3")
+    _spawnmenu.AddItem(userid, "- Fading Doors", "+5", "fdoor_settime 5")
+    _spawnmenu.AddItem(userid, "- Fading Doors", "+7", "fdoor_settime 7")
+    _spawnmenu.AddItem(userid, "- Fading Doors", "+10", "fdoor_settime 10")
+    _spawnmenu.AddItem(userid, "- Fading Doors", "+12", "fdoor_settime 12")
+    _spawnmenu.AddItem(userid, "- Fading Doors", "+15", "fdoor_settime 15")
+    _spawnmenu.AddItem(userid, "- Fading Doors", "+30", "fdoor_settime 30")
     local timecommand = ("@fdoor_settime " .. DoorSettings[userid].Time .. " ")
-    _spawnmenu.AddItem(userid, "Fading Doors", timecommand, "")
-    _spawnmenu.AddItem(userid, "Fading Doors", "@    ", "")
-    _spawnmenu.AddItem(userid, "Fading Doors", "@Unmake Door or Keypad", "")
-    _spawnmenu.AddItem(userid, "Fading Doors", "@also unmakes attached Keypads",
+    _spawnmenu.AddItem(userid, "- Fading Doors", timecommand, "")
+    _spawnmenu.AddItem(userid, "- Fading Doors", "@    ", "")
+    _spawnmenu.AddItem(userid, "- Fading Doors", "@Unmake Door or Keypad", "")
+    _spawnmenu.AddItem(userid, "- Fading Doors", "@also unmakes attached Keypads",
                        "")
-    _spawnmenu.AddItem(userid, "Fading Doors", "+Unmake Target",
+    _spawnmenu.AddItem(userid, "- Fading Doors", "+Unmake Target",
                        "fdoor_traceunmaketarget")
-    _spawnmenu.AddItem(userid, "Fading Doors", "@      ", "")
-    _spawnmenu.AddItem(userid, "Fading Doors", "@KeypadOnly, disabling will", "")
-    _spawnmenu.AddItem(userid, "Fading Doors", "@allow Use on door to open it",
+    _spawnmenu.AddItem(userid, "- Fading Doors", "@      ", "")
+    _spawnmenu.AddItem(userid, "- Fading Doors", "@KeypadOnly, disabling will", "")
+    _spawnmenu.AddItem(userid, "- Fading Doors", "@allow Use on door to open it",
                        "")
-    _spawnmenu.AddItem(userid, "Fading Doors", "+Disable", "fdoor_padonly 0")
-    _spawnmenu.AddItem(userid, "Fading Doors", "+Enable", "fdoor_padonly 1")
+    _spawnmenu.AddItem(userid, "- Fading Doors", "+Disable", "fdoor_padonly 0")
+    _spawnmenu.AddItem(userid, "- Fading Doors", "+Enable", "fdoor_padonly 1")
     if DoorSettings[userid].PadOnly == true then
-        _spawnmenu.AddItem(userid, "Fading Doors", "@fdoor_padonly 1", "")
+        _spawnmenu.AddItem(userid, "- Fading Doors", "@fdoor_padonly 1", "")
     else
-        _spawnmenu.AddItem(userid, "Fading Doors", "@fdoor_padonly 0", "")
+        _spawnmenu.AddItem(userid, "- Fading Doors", "@fdoor_padonly 0", "")
     end
-    _spawnmenu.AddItem(userid, "Fading Doors", "@       ", "")
-    _spawnmenu.AddItem(userid, "Fading Doors", "@Fading Doors 1.8", "")
-    _spawnmenu.AddItem(userid, "Fading Doors", "@by Brainles5", "")
-    _spawnmenu.AddItem(userid, "Fading Doors", "@Special thanks to Nafrayu", "")
-    _spawnmenu.AddItem(userid, "Fading Doors", "@for debugging and extra code!",
-                       "")
+    _spawnmenu.AddItem(userid, "- Fading Doors", "@       ", "")
+    _spawnmenu.AddItem(userid, "- Fading Doors", "@Fading Doors 1.8", "")
+    _spawnmenu.AddItem(userid, "- Fading Doors", "@by Brainles5", "")
 end
